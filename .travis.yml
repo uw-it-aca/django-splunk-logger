@@ -1,0 +1,18 @@
+sudo: false
+language: python
+python:
+- '3.6'
+before_script:
+- pip install -e .
+- pip install pycodestyle
+- pip install nose2
+- pip install coverage
+- pip install coveralls
+script:
+- pycodestyle django-splunk-logger/
+- coverage run django-splunk-logger/test.py -v
+after_script:
+- coveralls
+before_deploy:
+- find django-splunk-logger/ -name \*.pyc -exec rm {} \;
+- echo $TRAVIS_TAG > django-splunk-logger/VERSION
