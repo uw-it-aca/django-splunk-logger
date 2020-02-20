@@ -1,0 +1,2 @@
+include django-splunk-logger/VERSION
+recursive-include django-splunk-logger *
