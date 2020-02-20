@@ -10,7 +10,7 @@ before_script:
 - pip install coveralls
 script:
 - pycodestyle django-splunk-logger/
-- coverage run django-splunk-logger/test.py -v
+- coverage run django-splunk-logger/test.py -v --settings=travis-ci.settings
 after_script:
 - coveralls
 before_deploy:

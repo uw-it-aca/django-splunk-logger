@@ -27,7 +27,7 @@ class SplunkHandler(logging.Handler):
     @staticmethod
     def event_from_exception_record(record):
         frame = get_frame_from_log_record(record)
-        event_data = {
+        message = {
             'path': frame.f_code.co_filename,
             'line': frame.f_lineno,
             'method': frame.f_code.co_name,
@@ -35,5 +35,9 @@ class SplunkHandler(logging.Handler):
             'module': inspect.getmodule(frame).__name__,
             'message': record.getMessage(),
             'traceback': record.exc_text
+        }
+        event_data = {
+            "level": record.levelname,
+            "message": message
         }
         return event_data
