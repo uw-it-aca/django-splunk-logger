@@ -16,3 +16,12 @@ after_script:
 before_deploy:
 - find django-splunk-logger/ -name \*.pyc -exec rm {} \;
 - echo $TRAVIS_TAG > django-splunk-logger/VERSION
+deploy:
+  provider: pypi
+  user: uw-it-aca
+  skip_cleanup: true
+  on:
+    python: '3.6'
+    tags: true
+  password:
+    secure: XjxEwmSUe68jY3U+GVe7/gNDw2+EJzksiXR1KKNWf/LeZ8A3xh+lPQvkpLEAgKmk2V16pVTFO4/acEHYQLN0Q+IGwfmbNzFRe/RFRsXyMv/ZJapq0OBZauOML6+wR9wJN31Ui4lbmkJgQ3be9qGxpN1ncoHVF/8ntjAzmt70O/LwRU7KqSem2UkNtz1cOpELbuzpla9OVJ30dZ+57tDEIyveNAYr9yx5MEpA/bSsVkn91wQfQX8+7T+NK8l00T5lZsqCQ+gJeN4Z/ZcqTkzLOsQJSMX7wEtBrqfg8FNHHSPkjbdp5oq2lThdHCxvflL9j/gjTlHoUoq94YGDKlgypobX247fBVhc++n31mgG0CepxWvklOsvnJU+gO9msqJQV49zCGGuX3eujFQHqUAZIVZtTgRVzqO1lbfK13Ong2fxikanlZaBgAELAOOY+1FSUvMrNoJ65sAKqwpGU2GpuJqMOXmPmlXUl6cgs66MzsACOqyvGir4fHVq+u7riXMldxiHPy61mhvdwFpgZTS+WdWg8XX+MtlJcLdFWs5UXabyoAzcoQS3fNXqg4ThI5+kVMYVKqv87IgDExXDVNxRnzItQKeLTl5b1DvFb4d0oUqIVJ/ZOrPuF2bbpm3KOgcKzkkfRLDQJcwCGtP3jIQ6SVxq0M1l+SOKnNhhq3b7p9Y=
