@@ -1,0 +1,4 @@
+[run]
+branch = True
+source = django-splunk-logger
+include = django-splunk-logger/*
