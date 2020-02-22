@@ -35,6 +35,8 @@ SPLUNK_TOKEN = "your token"
 SPLUNK_ADDRESS = "your splunk host"
 # Event Collector Port (default: 8088)
 SPLUNK_EVENT_COLLECTOR_PORT = "your splunk HEC port"
+# CA bundle for splunk SSL cert verification
+SPLUNK_CA_BUNDLE = "/path/to/bundle"
 ```
 
 ### Sample Event Payloads

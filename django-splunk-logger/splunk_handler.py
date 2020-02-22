@@ -6,12 +6,16 @@ from .utilities import get_class_from_frame, get_frame_from_log_record
 
 class SplunkHandler(logging.Handler):
     def emit(self, record):
-        logger_name = record.name
-        if record.exc_info:
-            event = self.event_from_exception_record(record)
-        else:
-            event = self.event_from_log_record(record)
-        SplunkEvent().send_event(event, sourcetype=logger_name)
+        try:
+            logger_name = record.name
+            if record.exc_info:
+                event = self.event_from_exception_record(record)
+            else:
+                event = self.event_from_log_record(record)
+            SplunkEvent().send_event(event, sourcetype=logger_name)
+        except Exception:
+            # Don't block application if something goes wrong with logging
+            pass
 
     @staticmethod
     def event_from_log_record(log_record):

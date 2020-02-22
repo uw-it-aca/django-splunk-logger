@@ -17,4 +17,4 @@ class SplunkEvent(object):
         requests.post(url,
                       headers=headers,
                       data=json.dumps(event_data),
-                      verify=False)
+                      verify=settings.SPLUNK_CA_BUNDLE)
